@@ -171,20 +171,20 @@ public class TestRailClient {
     }
 
     public boolean authenticationWorks() throws IOException {
-        TestRailResponse response = httpGet("/index.php?/api/v2/get_projects");
+        TestRailResponse response = httpGet("index.php?/api/v2/get_projects");
         return (200 == response.getStatus());
     }
 
     public Project[] getProjects() throws IOException, ElementNotFoundException {
         String body = httpGet("index.php?/api/v2/get_projects").getBody();
-        PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
-        writer.println(body);
-        writer.println("The second line");
-        writer.close();
-        JSONObject jsonObj = new JSONObject(body);
-        System.out.println(body);
+//        PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+//        writer.println(body);
+//        writer.println("The second line");
+//        writer.close();
+        JSONArray json = new JSONArray(body);
+//        System.out.println(body);
         
-        JSONArray json = new JSONArray(jsonObj.getJSONArray("projects"));
+//        JSONArray json = new JSONArray(jsonObj.getJSONArray("projects"));
         Project[] projects = new Project[json.length()];
         for (int i = 0; i < json.length(); i++) {
             JSONObject o = json.getJSONObject(i);
