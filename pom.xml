@@ -99,11 +99,6 @@
       <groupId>org.eclipse.hudson</groupId>
       <artifactId>hudson-utils</artifactId>
       <version>3.0.0</version>
-    </dependency><!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
-    <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-      <version>2.3.1</version>
     </dependency>
 
 
@@ -251,14 +246,6 @@
           </execution>
         </executions>
       </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>animal-sniffer-maven-plugin</artifactId>
-          <version>1.17</version>
-          <configuration>
-            <skip>true</skip>
-          </configuration>
-        </plugin>
     </plugins>
   </build>
 
