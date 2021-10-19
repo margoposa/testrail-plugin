@@ -181,6 +181,8 @@ public class TestRailClient {
 //        writer.println(body);
 //        writer.println("The second line");
 //        writer.close();
+        boolean kek = true;
+        if (kek) throw new ElementNotFoundException(body);
         JSONArray json = new JSONArray(body);
 //        System.out.println(body);
         
