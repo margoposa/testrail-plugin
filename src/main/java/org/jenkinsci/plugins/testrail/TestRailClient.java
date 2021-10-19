@@ -244,7 +244,8 @@ public class TestRailClient {
         JSONArray json;
 
         try {
-            json = new JSONArray(body);
+            JSONObject obj = JSONObject(body);
+            json = obj.getJSONArray("cases");
         } catch (JSONException e) {
             throw new ElementNotFoundException("No cases for project " + projectId + " and suite " + suiteId + "! Response from TestRail is: \n" + body);
         }
