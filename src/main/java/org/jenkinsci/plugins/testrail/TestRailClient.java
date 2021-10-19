@@ -186,18 +186,9 @@ public class TestRailClient {
 
     public Project[] getProjects() throws IOException, ElementNotFoundException {
         String body = httpGet("index.php?/api/v2/get_projects").getBody();
-//        File newFile = new File("textada");
-//        System.out.println(newFile.createNewFile());
-//        PrintWriter writer = new PrintWriter("textada", "UTF-8");
-//        writer.println(body);
-//        writer.println("The second line");
-//        writer.close();
-//        boolean kek = true;
-//        if (kek) throw new ElementNotFoundException(body);
         JSONObject jsonObj = new JSONObject(body);
-//        System.out.println(body);
         
-        JSONArray json = new JSONArray(jsonObj.getJSONArray("projects"));
+        JSONArray json = jsonObj.getJSONArray("projects");
         Project[] projects = new Project[json.length()];
         for (int i = 0; i < json.length(); i++) {
             JSONObject o = json.getJSONObject(i);
