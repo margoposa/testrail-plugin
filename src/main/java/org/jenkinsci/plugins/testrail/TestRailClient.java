@@ -261,7 +261,8 @@ public class TestRailClient {
 
     public Section[] getSections(int projectId, int suiteId) throws IOException, ElementNotFoundException {
         String body = httpGet("index.php?/api/v2/get_sections/" + projectId + "&suite_id=" + suiteId).getBody();
-        JSONArray json = new JSONArray(body);
+        JSONObject obj = new JSONObject(body);
+        JSONArray json = obj.getJSONArray("sections");
 
         Section[] sects = new Section[json.length()];
         for (int i = 0; i < json.length(); i++) {
@@ -348,7 +349,8 @@ public class TestRailClient {
         String body = httpGet("index.php?/api/v2/get_milestones/" + projectId).getBody();
         JSONArray json;
         try {
-          json = new JSONArray(body);
+            JSONObject obj = new JSONObject(body);
+          json = obj.getJSONArray("milestones");
         } catch (JSONException e) {
             return new Milestone[0];
         }
