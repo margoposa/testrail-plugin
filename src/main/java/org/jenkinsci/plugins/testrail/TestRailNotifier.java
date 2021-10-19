@@ -96,7 +96,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
         try {
             testCases = new ExistingTestCases(testrail, this.testrailProject, this.testrailSuite);
         } catch (ElementNotFoundException e) {
-            taskListener.getLogger().println(testrail.toString() + this.testrailProject + this.testrailSuite + "Cannot find project or suite on TestRail server. Please check your Jenkins job and system configurations.");
+            taskListener.getLogger().println(e+ "_" +testrail + "_" + this.testrailProject + "_" + this.testrailSuite + "Cannot find project or suite on TestRail server. Please check your Jenkins job and system configurations.");
             run.setResult(hudson.model.Result.FAILURE);
         }
 
