@@ -184,7 +184,7 @@ public class TestRailClient {
         JSONObject jsonObj = new JSONObject(body);
         System.out.println(body);
         
-        JSONArray json = new JSONArray(jsonObj.getJSONObject("projects"));
+        JSONArray json = new JSONArray(jsonObj.getJSONArray("projects"));
         Project[] projects = new Project[json.length()];
         for (int i = 0; i < json.length(); i++) {
             JSONObject o = json.getJSONObject(i);
