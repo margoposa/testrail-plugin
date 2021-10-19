@@ -171,7 +171,7 @@ public class TestRailClient {
     }
 
     public boolean authenticationWorks() throws IOException {
-        TestRailResponse response = httpGet("index.php?/api/v2/get_projects");
+        TestRailResponse response = httpGet("/index.php?/api/v2/get_projects");
         return (200 == response.getStatus());
     }
 
