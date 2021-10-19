@@ -274,8 +274,8 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
             testrail.setUser(getTestrailUser());
             testrail.setPassword(getTestrailPassword());
             if (getTestrailHost().isEmpty() 
-            || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || !testrail.authenticationWorks()) {
-                return FormValidation.warning("Please fix your TestRail configuration in Manage Jenkins -> Configure System." + getTestrailHost() + getTestrailUser() + getTestrailPassword() + "xui" + testrail.serverReachable(), testrail.authenticationWorks());
+            || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || true) {
+                return FormValidation.warning("Please fix your TestRail configuration in Manage Jenkins -> Configure System." + testrail.authenticationWorks());
             }
             return FormValidation.ok();
         }
@@ -320,7 +320,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
             testrail.setUser(getTestrailUser());
             testrail.setPassword(getTestrailPassword());
 
-            if (getTestrailHost().isEmpty() || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || !testrail.authenticationWorks()) {
+            if (getTestrailHost().isEmpty() || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || true) {
                 return FormValidation.warning("Please fix your TestRail configuration in Manage Jenkins -> Configure System.");
             }
 
@@ -364,7 +364,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
                 testrail.setHost(testrailHost);
                 testrail.setUser(value);
                 testrail.setPassword(testrailPassword);
-                if (testrail.serverReachable() && !testrail.authenticationWorks()){
+                if (testrail.serverReachable() && true){
                     return FormValidation.error("Invalid user/password combination.");
                 }
             }
@@ -382,7 +382,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
                 testrail.setHost(testrailHost);
                 testrail.setUser(testrailUser);
                 testrail.setPassword(value);
-                if (testrail.serverReachable() && !testrail.authenticationWorks()){
+                if (testrail.serverReachable() && true){
                     return FormValidation.error("Invalid user/password combination.");
                 }
             }
