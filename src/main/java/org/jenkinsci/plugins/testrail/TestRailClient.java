@@ -41,6 +41,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.InterruptedException;
+import java.util.Base64;
+
 import static org.jenkinsci.plugins.testrail.Utils.*;
 /**
  * Created by Drew on 3/19/14.
@@ -65,12 +67,13 @@ public class TestRailClient {
 
     private HttpClient setUpHttpClient(HttpMethod method) {
         HttpClient httpclient = new HttpClient();
-        httpclient.getParams().setAuthenticationPreemptive(true);
-        httpclient.getState().setCredentials(
-                AuthScope.ANY,
-                new UsernamePasswordCredentials(this.user, this.password)
-        );
-        method.setDoAuthentication(true);
+//        httpclient.getParams().setAuthenticationPreemptive(true);
+//        httpclient.getState().setCredentials(
+//                AuthScope.ANY,
+//                new UsernamePasswordCredentials(this.user, this.password)
+//        );
+//        method.setDoAuthentication(true);
+        method.addRequestHeader("Authorization", "Basic " + new String(Base64.getEncoder().encode((this.user + ":" + this.password).getBytes())));
         method.addRequestHeader("Content-Type", "application/json");
         return httpclient;
     }
