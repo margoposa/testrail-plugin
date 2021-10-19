@@ -92,7 +92,7 @@ public class TestRailClient {
 
     private TestRailResponse httpGetInt(String path) throws IOException {
         TestRailResponse result;
-        GetMethod get = new GetMethod(host + "/" + path);
+        GetMethod get = new GetMethod(host + path);
         HttpClient httpclient = setUpHttpClient(get);
 
         try {
@@ -135,7 +135,7 @@ public class TestRailClient {
     private TestRailResponse httpPostInt(String path, String payload)
             throws UnsupportedEncodingException, IOException, HttpException {
         TestRailResponse result;
-        PostMethod post = new PostMethod(host + "/" + path);
+        PostMethod post = new PostMethod(host + path);
         HttpClient httpclient = setUpHttpClient(post);
 
         try {

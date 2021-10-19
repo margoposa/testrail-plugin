@@ -273,7 +273,8 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
             testrail.setHost(getTestrailHost());
             testrail.setUser(getTestrailUser());
             testrail.setPassword(getTestrailPassword());
-            if (getTestrailHost().isEmpty() || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || !testrail.authenticationWorks()) {
+            if (getTestrailHost().isEmpty() 
+            || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || !testrail.authenticationWorks()) {
                 return FormValidation.warning("Please fix your TestRail configuration in Manage Jenkins -> Configure System.");
             }
             return FormValidation.ok();
