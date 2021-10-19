@@ -176,7 +176,8 @@ public class TestRailClient {
 
     public Project[] getProjects() throws IOException, ElementNotFoundException {
         String body = httpGet("/index.php?/api/v2/get_projects").getBody();
-        JSONArray json = new JSONArray(body);
+        JSONObject jsonObj = new JSONObject(body);
+        JSONArray json = new JSONArray(jsonObj.getJSONObject("projects"));
         Project[] projects = new Project[json.length()];
         for (int i = 0; i < json.length(); i++) {
             JSONObject o = json.getJSONObject(i);
