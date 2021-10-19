@@ -275,7 +275,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
             testrail.setPassword(getTestrailPassword());
             if (getTestrailHost().isEmpty() 
             || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || true) {
-                return FormValidation.warning("Please fix." + testrail.authenticationWorks().toString());
+                return FormValidation.warning("Please fix." + testrail.authenticationWorks());
             }
             return FormValidation.ok();
         }
