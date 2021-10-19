@@ -274,8 +274,8 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
             testrail.setUser(getTestrailUser());
             testrail.setPassword(getTestrailPassword());
             if (getTestrailHost().isEmpty() 
-            || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || true) {
-                return FormValidation.warning("Please fix." + testrail.authenticationWorks());
+            || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || !testrail.serverReachable()) {
+                return FormValidation.warning("Please fix your TestRail configuration in Manage Jenkins -> Configure System.");
             }
             return FormValidation.ok();
         }
@@ -320,7 +320,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
             testrail.setUser(getTestrailUser());
             testrail.setPassword(getTestrailPassword());
 
-            if (getTestrailHost().isEmpty() || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || true) {
+            if (getTestrailHost().isEmpty() || getTestrailUser().isEmpty() || getTestrailPassword().isEmpty() || !testrail.serverReachable() || !testrail.serverReachable()) {
                 return FormValidation.warning("Please fix your TestRail configuration in Manage Jenkins -> Configure System.");
             }
 
@@ -364,7 +364,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
                 testrail.setHost(testrailHost);
                 testrail.setUser(value);
                 testrail.setPassword(testrailPassword);
-                if (testrail.serverReachable() && true){
+                if (testrail.serverReachable() && !testrail.authenticationWorks()){
                     return FormValidation.error("Invalid user/password combination.");
                 }
             }
@@ -382,7 +382,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
                 testrail.setHost(testrailHost);
                 testrail.setUser(testrailUser);
                 testrail.setPassword(value);
-                if (testrail.serverReachable() && true){
+                if (testrail.serverReachable() && !testrail.authenticationWorks()){
                     return FormValidation.error("Invalid user/password combination.");
                 }
             }
