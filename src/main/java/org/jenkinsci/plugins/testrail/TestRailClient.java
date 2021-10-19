@@ -35,6 +35,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import org.apache.http.HttpException;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -178,12 +180,14 @@ public class TestRailClient {
 
     public Project[] getProjects() throws IOException, ElementNotFoundException {
         String body = httpGet("index.php?/api/v2/get_projects").getBody();
-//        PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
-//        writer.println(body);
-//        writer.println("The second line");
-//        writer.close();
-        boolean kek = true;
-        if (kek) throw new ElementNotFoundException(body);
+        File newFile = new File("textada");
+        System.out.println(newFile.createNewFile());
+        PrintWriter writer = new PrintWriter("textada", "UTF-8");
+        writer.println(body);
+        writer.println("The second line");
+        writer.close();
+//        boolean kek = true;
+//        if (kek) throw new ElementNotFoundException(body);
         JSONArray json = new JSONArray(body);
 //        System.out.println(body);
         
