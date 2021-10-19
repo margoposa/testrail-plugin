@@ -176,6 +176,10 @@ public class TestRailClient {
 
     public Project[] getProjects() throws IOException, ElementNotFoundException {
         String body = httpGet("/index.php?/api/v2/get_projects").getBody();
+        PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+        writer.println(body);
+        writer.println("The second line");
+        writer.close();
         JSONObject jsonObj = new JSONObject(body);
         System.out.println(body);
         
