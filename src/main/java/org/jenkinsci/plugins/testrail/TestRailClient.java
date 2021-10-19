@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 import org.apache.http.HttpException;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -65,7 +66,7 @@ public class TestRailClient {
         this.password = password;
     }
 
-    private HttpClient setUpHttpClient(HttpMethod method) {
+    private HttpClient setUpHttpClient(HttpMethod method) throws UnsupportedEncodingException {
         HttpClient httpclient = new HttpClient();
 //        httpclient.getParams().setAuthenticationPreemptive(true);
 //        httpclient.getState().setCredentials(
@@ -73,7 +74,10 @@ public class TestRailClient {
 //                new UsernamePasswordCredentials(this.user, this.password)
 //        );
 //        method.setDoAuthentication(true);
-        method.addRequestHeader("Authorization", "Basic " + new String(Base64.getEncoder().encode((this.user + ":" + hudson.util.Secret.decrypt(this.password)).getBytes())));
+
+        byte[] message = (this.user + ":" + hudson.util.Secret.decrypt(this.password)).getBytes("UTF-8");
+//        method.addRequestHeader("Authorization", "Basic " + new String(Base64.getEncoder().encode((this.user + ":" + hudson.util.Secret.decrypt(this.password)).getBytes())));
+        method.addRequestHeader("Authorization", "Basic " + DatatypeConverter.printBase64Binary(message));
         method.addRequestHeader("Content-Type", "application/json");
         return httpclient;
     }
