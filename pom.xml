@@ -94,6 +94,13 @@
       <artifactId>structs</artifactId>
       <version>1.10</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.eclipse.hudson/hudson-utils -->
+    <dependency>
+      <groupId>org.eclipse.hudson</groupId>
+      <artifactId>hudson-utils</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
 
   </dependencies>
 

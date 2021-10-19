@@ -73,7 +73,7 @@ public class TestRailClient {
 //                new UsernamePasswordCredentials(this.user, this.password)
 //        );
 //        method.setDoAuthentication(true);
-        method.addRequestHeader("Authorization", "Basic " + new String(Base64.getEncoder().encode((this.user + ":" + this.password).getBytes())));
+        method.addRequestHeader("Authorization", "Basic " + new String(Base64.getEncoder().encode((this.user + ":" + hudson.util.Secret.decrypt(this.password)).getBytes())));
         method.addRequestHeader("Content-Type", "application/json");
         return httpclient;
     }
