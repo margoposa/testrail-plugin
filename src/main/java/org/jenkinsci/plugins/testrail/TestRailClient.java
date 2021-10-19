@@ -171,12 +171,12 @@ public class TestRailClient {
     }
 
     public boolean authenticationWorks() throws IOException {
-        TestRailResponse response = httpGet("/index.php?/api/v2/get_projects");
+        TestRailResponse response = httpGet("index.php?/api/v2/get_projects");
         return (200 == response.getStatus());
     }
 
     public Project[] getProjects() throws IOException, ElementNotFoundException {
-        String body = httpGet("/index.php?/api/v2/get_projects").getBody();
+        String body = httpGet("index.php?/api/v2/get_projects").getBody();
         PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
         writer.println(body);
         writer.println("The second line");
@@ -208,7 +208,7 @@ public class TestRailClient {
     }
 
     public Suite[] getSuites(int projectId) throws IOException, ElementNotFoundException {
-        String body = httpGet("/index.php?/api/v2/get_suites/" + projectId).getBody();
+        String body = httpGet("index.php?/api/v2/get_suites/" + projectId).getBody();
 
         JSONArray json;
         try {
