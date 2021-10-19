@@ -36,6 +36,7 @@ import org.json.JSONObject;
 
 import org.apache.http.HttpException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.InterruptedException;
 import static org.jenkinsci.plugins.testrail.Utils.*;
