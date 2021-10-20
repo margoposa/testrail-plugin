@@ -18,10 +18,9 @@
  */
 package org.jenkinsci.plugins.testrail;
 
+import hudson.model.TaskListener;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.UsernamePasswordCredentials;
-import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
@@ -37,12 +36,9 @@ import org.json.JSONObject;
 import org.apache.http.HttpException;
 
 import javax.xml.bind.DatatypeConverter;
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.InterruptedException;
-import java.util.Base64;
 
 import static org.jenkinsci.plugins.testrail.Utils.*;
 /**
@@ -322,7 +318,7 @@ public class TestRailClient {
         return c;
     }
 
-    public TestRailResponse addResultsForCases(int runId, TestRailResults results) 
+    public TestRailResponse addResultsForCases(int runId, TestRailResults results, TaskListener taskListener)
             throws IOException, TestRailException {
         JSONArray a = new JSONArray();
         for (int i = 0; i < results.getResults().size(); i++) {
@@ -334,6 +330,7 @@ public class TestRailClient {
 
         String payload = new JSONObject().put("results", a).toString();
         log(payload);
+        taskListener.getLogger().println("PAYLOAD: " + payload);
         TestRailResponse response = httpPost("index.php?/api/v2/add_results_for_cases/" + runId, payload);
         return response;
     }
