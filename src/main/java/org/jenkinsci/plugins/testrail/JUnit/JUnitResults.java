@@ -29,6 +29,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import jenkins.MasterToSlaveFileCallable;
 
@@ -66,23 +67,11 @@ public class JUnitResults {
                     @Override
                     public void visit(File file, String s) throws IOException {
                         logger.println("I feel like this processing is not called " + file.getName());
-                        if (file.getName() == "junit.xml") {
-                            InputStream inputStream = null;
-                            try {
-                                logger.println("gde moi logi suchara");
-                                ClassLoader classLoader = getClass().getClassLoader();
-                                inputStream = classLoader.getResourceAsStream("junit.xml");
-                                String data = readFromInputStream(inputStream);
-                                logger.println(data + "______________________");
-                            }
-                            finally {
-                                if (inputStream != null) {
-                                    try {
-                                        inputStream.close();
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
+                        if (file.getName().equals("junit.xml")) {
+                            logger.println("gde moi logi suchara");
+                            Scanner xmlScanner = new Scanner(file);
+                            while (xmlScanner.hasNext()) {
+                                logger.println(xmlScanner.next());
                             }
                         }
 
