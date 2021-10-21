@@ -73,6 +73,7 @@ public class JUnitResults {
                             while (xmlScanner.hasNext()) {
                                 logger.println(xmlScanner.next());
                             }
+                            xmlScanner.close();
                         }
 
                         try {
