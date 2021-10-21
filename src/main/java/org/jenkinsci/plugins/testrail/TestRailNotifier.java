@@ -126,6 +126,7 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
         FilePath tempdir = new FilePath(Util.createTempDir());
         // This picks up *all* result files so if you have old results in the same directory we'll see those, too.
         try {
+            taskListener.getLogger().println(junitResultsGlob + " junitResultsGlob");
             workspace.copyRecursiveTo(junitResultsGlob, "", tempdir);
         } catch (Exception e) {
             taskListener.getLogger().println("Error trying to copy files to Jenkins master: " + e.getMessage());

@@ -62,14 +62,14 @@ public class JUnitResults {
             private static final long serialVersionUID = 1L;
 
             public Void invoke(File f, VirtualChannel channel) throws IOException {
-                logger.println("processing++ " + f.getName());
+                logger.println("processing folder " + f.getName());
                 scanner.scan(f, new FileVisitor() {
                     @Override
                     public void visit(File file, String s) throws IOException {
-                        logger.println("I feel like this processing is not called " + file.getName());
+                        logger.println("processing FILE " + file.getName());
                         if (file.getName().equals("junit.xml")) {
-                            logger.println("gde moi logi suchara");
                             Scanner xmlScanner = new Scanner(file);
+                            xmlScanner.useDelimiter("\n");
                             while (xmlScanner.hasNext()) {
                                 logger.println(xmlScanner.next());
                             }
@@ -88,6 +88,7 @@ public class JUnitResults {
                         } catch (ClassCastException e) {
                             try {
                                 TestSuite suite = (TestSuite) jaxbSuiteUnmarshaller.unmarshal(file);
+                                logger.println(suite.toString() + "IN CATCH");
                                 Suites.add(suite);
                            } catch (JAXBException ex) {
                                ex.printStackTrace();
