@@ -63,11 +63,11 @@ public class JUnitResults {
             private static final long serialVersionUID = 1L;
 
             public Void invoke(File f, VirtualChannel channel) throws IOException {
-                logger.println("processing " + f.getName());
+                logger.println("processing++ " + f.getName());
                 scanner.scan(f, new FileVisitor() {
                     @Override
                     public void visit(File file, String s) throws IOException {
-                        logger.println("processing " + file.getName());
+                        logger.println("I feel like this processing is not called " + file.getName());
                         try {
                             TestSuites suites = (TestSuites) jaxbSuitesUnmarshaller.unmarshal(file);
                             logger.println(suites.getSuites().size() + "HEARTON");
