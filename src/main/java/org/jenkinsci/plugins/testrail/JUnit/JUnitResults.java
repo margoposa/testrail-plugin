@@ -70,6 +70,8 @@ public class JUnitResults {
                         logger.println("processing " + file.getName());
                         try {
                             TestSuites suites = (TestSuites) jaxbSuitesUnmarshaller.unmarshal(file);
+                            logger.println(suites.getSuites().size() + "HEARTON");
+                            logger.println(suites.getSuites().get(0).toString() + "sshufflethedeck");
                             if (suites.hasSuites()) {
                                 for (TestSuite suite : suites.getSuites()) {
                                     Suites.add(suite);

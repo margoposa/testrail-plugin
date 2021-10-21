@@ -156,12 +156,6 @@ public class TestRailNotifier extends Notifier implements SimpleBuildStep {
         TestRailResponse response = null;
         try {
             runId = testrail.addRun(testCases.getProjectId(), testCases.getSuiteId(), milestoneId, runComment);
-            for (int i = 0; i < results.getResults().size(); i++) {
-                org.json.JSONObject o = new org.json.JSONObject();
-                TestRailResult r = results.getResults().get(i);
-                o.put("case_id", r.getCaseId()).put("status_id", r.getStatus().getValue()).put("comment", r.getComment()).put("elapsed", r.getElapsedTimeString());
-                taskListener.getLogger().println("SOOOOOOOOOOOOOOOOO : " + o);
-            }
             response = testrail.addResultsForCases(runId, results, taskListener);
         } catch (TestRailException e) {
             taskListener.getLogger().println("Error pushing results to TestRail");
