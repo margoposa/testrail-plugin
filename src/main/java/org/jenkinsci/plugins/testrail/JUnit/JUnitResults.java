@@ -67,7 +67,7 @@ public class JUnitResults {
                     @Override
                     public void visit(File file, String s) throws IOException {
                         logger.println("processing FILE " + file.getName());
-                        if (file.getName().equals("junit.xml")) {
+                        if (file.getName().equals("test-results.xml")) {
                             Scanner xmlScanner = new Scanner(file);
                             xmlScanner.useDelimiter("\n");
                             while (xmlScanner.hasNext()) {
