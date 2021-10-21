@@ -91,9 +91,11 @@ public class JUnitResults {
                                 logger.println(suite.toString() + "IN CATCH");
                                 Suites.add(suite);
                            } catch (JAXBException ex) {
+                                logger.println("IN CATCH OF CATCH");
                                ex.printStackTrace();
                            }
                         } catch (JAXBException exc) {
+                            logger.println("IDK WHERE IS IT");
                             exc.printStackTrace();
                         }
                     }
