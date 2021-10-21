@@ -88,14 +88,14 @@ public class JUnitResults {
                         } catch (ClassCastException e) {
                             try {
                                 TestSuite suite = (TestSuite) jaxbSuiteUnmarshaller.unmarshal(file);
-                                logger.println(suite.toString() + "IN CATCH");
+                                logger.println(suite.toString() + "IN CATCH" + e);
                                 Suites.add(suite);
                            } catch (JAXBException ex) {
-                                logger.println("IN CATCH OF CATCH");
+                                logger.println("IN CATCH OF CATCH" + ex);
                                ex.printStackTrace();
                            }
                         } catch (JAXBException exc) {
-                            logger.println("IDK WHERE IS IT");
+                            logger.println("IDK WHERE IS IT" + exc);
                             exc.printStackTrace();
                         }
                     }
