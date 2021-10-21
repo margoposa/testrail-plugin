@@ -69,8 +69,9 @@ public class JUnitResults {
                         if (file.getName() == "junit.xml") {
                             InputStream inputStream = null;
                             try {
+                                logger.println("gde moi logi suchara");
                                 ClassLoader classLoader = getClass().getClassLoader();
-                                inputStream = classLoader.getResourceAsStream("fileTest.txt");
+                                inputStream = classLoader.getResourceAsStream("junit.xml");
                                 String data = readFromInputStream(inputStream);
                                 logger.println(data + "______________________");
                             }
